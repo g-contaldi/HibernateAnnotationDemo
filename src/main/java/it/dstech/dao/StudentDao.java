@@ -14,7 +14,7 @@ public interface StudentDao {
 	
 	ArrayList<Student> getAllStudentsByNamedQuery();
 	
-	Student findByName();
+	Student findByName(String firstName);
 	
 	Student getByIdByCriteria(int id);
 

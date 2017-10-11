@@ -11,11 +11,8 @@ public abstract class HibernateDao {
 	private static Session session;
 
 	public static Session getSession() {
-		return session;
-	}
-
-	public static Session createSession() {
-		session = HibernateUtil.getSessionFactory().openSession();
+		if (session == null)
+			session = HibernateUtil.getSessionFactory().openSession();
 		return session;
 	}
 

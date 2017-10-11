@@ -11,20 +11,26 @@ import it.dstech.service.StudentServiceImpl;
 
 public class HibernateMain {
 
-	private static Scanner in = new Scanner(System.in);
+	private static Scanner in;
 
-	private static StudentService studentService = new StudentServiceImpl();
+	private static StudentService studentService;
 
 	public static void main(String[] args) {
 
-		HibernateDao.createSession();
+		in = new Scanner(System.in);
+		studentService = new StudentServiceImpl();
+		HibernateDao.getSession();
+
+		boolean exit = false;
 
 		do {
+			System.out.println("------");
 			System.out.println("1 - Crea studente");
 			System.out.println("2 - Lista studenti");
-			System.out.println("3 - Update studente");
-			System.out.println("4 - Delete studente");
-			System.out.println("5 - Termina programma");
+			System.out.println("3 - Cerca studente per nome");
+			System.out.println("4 - Update studente");
+			System.out.println("5 - Delete studente");
+			System.out.println("6 - Termina programma");
 
 			int scelta = in.nextInt();
 			in.nextLine();
@@ -36,23 +42,28 @@ public class HibernateMain {
 				break;
 			case 2:
 
-				findByName();
+				getAllStudents();
 				break;
 			case 3:
 
-				updateStudent();
+				findByName();
 				break;
 			case 4:
 
-				deleteStudent();
+				updateStudent();
 				break;
 			case 5:
 
+				deleteStudent();
+				break;
+			case 6:
+
 				HibernateDao.closeSession();
 				HibernateUtil.shutdown();
-				System.exit(0);
+				exit = true;
 			}
-		} while (true);
+		} while (!exit);
+		System.exit(0);
 
 	}
 
@@ -77,7 +88,7 @@ public class HibernateMain {
 
 		// ArrayList<Student> listStudents =
 		// studentService.getAllStudentsByNamedQuery();
-		
+
 		int id = 1;
 		for (Student student : listStudents) {
 			System.out.println(id + " - " + student);
@@ -87,7 +98,9 @@ public class HibernateMain {
 	}
 
 	private static void findByName() {
-		System.out.println(studentService.findByName());
+		System.out.println("Inserisci il nome dello studente da ricercare");
+		String firstName = in.nextLine();
+		System.out.println(studentService.findByName(firstName));
 
 	}
 

@@ -43,10 +43,9 @@ public class StudentDaoImpl extends HibernateDao implements StudentDao {
 		return (ArrayList<Student>) getSession().getNamedQuery("findAllStudents").list();
 	}
 
-	public Student findByName() {
+	public Student findByName(String firstName) {
 		Query namedQuery = getSession().getNamedQuery("findByName");
 		namedQuery.setParameter("firstName", "rgdv");
-		namedQuery.setParameter("lastName", "dfgcv");
 		Student uniqueResult = (Student) namedQuery.uniqueResult();
 		return uniqueResult;
 	}

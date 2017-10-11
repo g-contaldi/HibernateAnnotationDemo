@@ -11,8 +11,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @NamedQueries({ @NamedQuery(name = "findAllStudents", query = "SELECT s FROM Student s"),
-		@NamedQuery(name = "findByName", query = "SELECT s FROM Student s where s.firstName =:firstName "
-				+ "and s.lastName =:lastName") })
+		@NamedQuery(name = "findByName", query = "SELECT s FROM Student s where s.firstName =:firstName ") })
 @Entity
 public class Student implements Serializable {
 

@@ -14,7 +14,7 @@ public interface StudentService {
 	
 	ArrayList<Student> getByCriteria();
 	
-	Student findByName();
+	Student findByName(String firstName);
 
 	Student updateStudent(Student student);
 

@@ -7,7 +7,7 @@ import it.dstech.dao.StudentDaoImpl;
 import it.dstech.model.Student;
 
 public class StudentServiceImpl implements StudentService {
-	
+
 	StudentDao dao = new StudentDaoImpl();
 
 	public Student saveStudent(Student student) {
@@ -34,8 +34,8 @@ public class StudentServiceImpl implements StudentService {
 		return dao.getAllStudentsByNamedQuery();
 	}
 
-	public Student findByName() {
-		return dao.findByName();
+	public Student findByName(String firstName) {
+		return dao.findByName(firstName);
 	}
 
 }
